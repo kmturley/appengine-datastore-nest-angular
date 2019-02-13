@@ -1,0 +1,34 @@
+version: '3'
+services:
+
+  database:
+    image: google/cloud-sdk
+    command: gcloud beta emulators datastore start --host-port 0.0.0.0:8000 --project emulator --store-on-disk
+    ports:
+      - 8000:8000
+
+  backend:
+    build: ./backend
+    command: npm run start:dev
+    ports:
+      - 8080:8080
+    environment:
+      # DATASTORE_DATASET: emulator
+      # DATASTORE_EMULATOR_HOST_PATH: backend:8000/datastore
+      # DATASTORE_HOST: backend:8000
+      # DATASTORE_LISTEN_ADDRESS: backend:8000
+      # GOOGLE_CLOUD_PROJECT: emulator
+      DATASTORE_EMULATOR_HOST: backend:8000
+      DATASTORE_PROJECT_ID: emulator
+    volumes:
+      - ./backend:/usr/src/app:rw
+      - /usr/src/app/node_modules
+
+  frontend:
+    build: ./frontend
+    command: npm start
+    ports:
+      - 4200:4200
+    volumes:
+      - ./frontend:/usr/src/app:rw
+      - /usr/src/app/node_modules
