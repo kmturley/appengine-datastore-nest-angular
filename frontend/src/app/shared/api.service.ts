@@ -15,4 +15,8 @@ export class ApiService {
   get(path) {
     return this.http.get(`${environment.apiUrl}/${path}`);
   }
+
+  post(path) {
+    return this.http.post(`${environment.apiUrl}/${path}`);
+  }
 }

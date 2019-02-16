@@ -16,9 +16,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('AppComponent', this);
+    this.load();
+  }
+
+  load() {
+    console.log('load');
     this.api.get('items').subscribe((data: Array<any>) => {
-      console.log('data', data);
-      this.items = data;
+      console.log('load.success', data[0]);
+      this.items = data[0];
+    });
+  }
+
+  add() {
+    console.log('add');
+    this.api.post('items').subscribe(() => {
+      console.log('add.success');
+      this.load();
     });
   }
 
