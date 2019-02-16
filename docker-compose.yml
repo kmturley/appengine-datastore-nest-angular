@@ -13,12 +13,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      # DATASTORE_DATASET: emulator
-      # DATASTORE_EMULATOR_HOST_PATH: backend:8000/datastore
-      # DATASTORE_HOST: backend:8000
-      # DATASTORE_LISTEN_ADDRESS: backend:8000
-      # GOOGLE_CLOUD_PROJECT: emulator
-      DATASTORE_EMULATOR_HOST: backend:8000
+      DATASTORE_EMULATOR_HOST: database:8000
       DATASTORE_PROJECT_ID: emulator
     volumes:
       - ./backend:/usr/src/app:rw
