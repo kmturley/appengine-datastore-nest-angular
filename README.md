@@ -6,7 +6,7 @@ Example full-stack Typescript project using:
 * Google Datastore 3.1.x
 * NodeJS 10.x
 * NestJS 5.6.x
-* Angular 7.2.x
+* Angular Universal 7.1.x
 * Docker 18.x
 
 
@@ -62,7 +62,7 @@ Deploy frontend service:
     cd frontend
     gcloud init
     npm install
-    npm run build
+    npm run build:prerender
     npm run deploy
 
 

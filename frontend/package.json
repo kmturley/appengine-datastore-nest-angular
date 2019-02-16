@@ -41,6 +41,7 @@
     "express": "^4.15.2",
     "reflect-metadata": "^0.1.10",
     "rxjs": "6.3.3",
+    "shelljs": "^0.8.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

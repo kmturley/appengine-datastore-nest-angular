@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './shared/api.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,22 +16,17 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('AppComponent', this);
     this.load();
   }
 
   load() {
-    console.log('load');
-    this.api.get('items').subscribe((data: Array<any>) => {
-      console.log('load.success', data[0]);
+    this.api.get(`${environment.apiUrl}/items`, 'items').subscribe((data: Array<any>) => {
       this.items = data[0];
     });
   }
 
   add() {
-    console.log('add');
-    this.api.post('items', {}).subscribe(() => {
-      console.log('add.success');
+    this.api.post(`${environment.apiUrl}/items`, {}).subscribe(() => {
       this.load();
     });
   }
