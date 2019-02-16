@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "npm run build",
     "pretest": "npm run build",
-    "build": "tsc -p tsconfig.build.json",
+    "patch": "mkdir -p node_modules/@google-cloud/datastore/build/proto && curl -o node_modules/@google-cloud/datastore/build/proto/datastore.d.ts 'https://raw.githubusercontent.com/googleapis/nodejs-datastore/master/proto/datastore.d.ts' && curl -o node_modules/@google-cloud/datastore/build/proto/entity.d.ts 'https://raw.githubusercontent.com/googleapis/nodejs-datastore/master/proto/entity.d.ts'",
+    "build": "npm run patch && tsc -p tsconfig.build.json",
     "deploy": "gcloud app deploy",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "start": "node ./dist/main.js",
