@@ -4,15 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'my-app' }),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TransferHttpCacheModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

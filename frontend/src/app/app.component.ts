@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   add() {
     console.log('add');
-    this.api.post('items').subscribe(() => {
+    this.api.post('items', {}).subscribe(() => {
       console.log('add.success');
       this.load();
     });
