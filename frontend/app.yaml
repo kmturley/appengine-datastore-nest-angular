@@ -6,6 +6,10 @@ handlers:
   static_files: dist/browser/index.html
   upload: dist/browser/index.html
 
+- url: /json/(.*\.json)$
+  static_files: dist/browser/json/\1
+  upload: dist/browser/json/(.*)
+
 - url: /(.*)
   static_files: dist/browser/\1
   upload: dist/browser/(.*)
