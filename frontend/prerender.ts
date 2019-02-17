@@ -54,10 +54,8 @@ getPaths().then((ROUTES: any[]) => {
     })).then((res: { output: string, data: object }) => {
       // write html file
       const htmlFile = join(routeFolder, 'index.html');
-      if (!existsSync(htmlFile)) {
-        console.log('+', htmlFile);
-        writeFileSync(htmlFile, res.output);
-      }
+      console.log('+', htmlFile);
+      writeFileSync(htmlFile, res.output);
 
       // write json files from TransferState objects
       Object.keys(res.data).forEach(jsonKey => {
