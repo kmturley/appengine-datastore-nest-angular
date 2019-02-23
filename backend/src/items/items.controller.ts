@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { Datastore } from '@google-cloud/datastore';
 
 @Controller('items')
@@ -15,6 +16,7 @@ export class ItemsController {
   }
 
   @Post()
+  @UseGuards(AuthGuard())
   async create(): Promise<any> {
     return this.db.save({
       key: this.db.key('visit'),
