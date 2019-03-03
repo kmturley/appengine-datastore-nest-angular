@@ -4,3 +4,7 @@
 # Exclude dependencies
 node_modules/
 dist/
+
+# Exclude Google Credentials
+credentials.json
+jwt.json

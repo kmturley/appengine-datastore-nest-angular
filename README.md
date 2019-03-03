@@ -8,7 +8,29 @@ Example full-stack Typescript project using:
 * NestJS 5.6.x
 * Angular Universal 7.1.x
 * Docker 18.x
+* Googe OAuth2
 
+
+## Auth Setup
+
+Create a Google Cloud project, and enable the Google+ API at:
+
+    https://console.cloud.google.com/apis/library/plus.googleapis.com
+
+Then create some credentials and save to a file at /backend/credentials.json:
+
+    APIs & Services > Create credentials > OAuth client ID > Other > Enter name > Download JSON
+
+Then generate a JWT token using:
+
+    cd backend
+    npm run generate-token
+
+Save in the following format at /backend/jwt.json
+
+    {
+      "secret_key": "X"
+    }
 
 ## Installation
 

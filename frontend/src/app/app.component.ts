@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent implements OnInit {
   items: Array<any>;
+  loginWindow: any;
 
   constructor(
     private api: ApiService
@@ -29,6 +30,20 @@ export class AppComponent implements OnInit {
     this.api.post(`${environment.apiUrl}/items`, {}).subscribe(() => {
       this.load();
     });
+  }
+
+  login() {
+    this.loginWindow = window.open('http://localhost:8080/auth/google', '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no');
+    window.addEventListener('message', (event) => {
+      this.onLogin(event.data);
+    });
+  }
+
+  onLogin(token) {
+    console.log('onLogin', token);
+    localStorage.setItem('token', token);
+    this.loginWindow.close();
+    window.removeEventListener('message', this.onLogin);
   }
 
 }

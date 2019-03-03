@@ -3,4 +3,6 @@
   <li *ngFor="let item of items">{{ item.message }} {{ item.timestamp | date:'short' }}</li>
 </ul>
 <button (click)="add()">Add Item</button>
+
+<button (click)="login()">Login</button>
 <router-outlet></router-outlet>
